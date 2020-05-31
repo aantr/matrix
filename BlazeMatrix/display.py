@@ -15,7 +15,7 @@ class Display:
         self.h = h
         self.min_fps = 1
         self.max_fps = 100
-        self.default_fps = 1
+        self.default_fps = 30
 
     def update(self):
         ...
