@@ -1,5 +1,6 @@
-import neopixel as neo
 from BlazeMatrix import *
+import neopixel as neo
+import board
 import time
 
 # LED strip configuration:
