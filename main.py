@@ -1,4 +1,4 @@
-# !/usr/bin/env python3
+#!/usr/bin/env python3
 
 import neopixel as neo
 from BlazeMatrix import *
