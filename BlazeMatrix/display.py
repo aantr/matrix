@@ -1,6 +1,7 @@
 from BlazeMatrix import Color
 # import pygame
-
+import neopixel as neo
+import board
 
 class Display:
     def __init__(self, w, h):
@@ -47,3 +48,18 @@ class PyGameDisplay(Display):
 
     def get_pixel(self, x, y):
         return self.m[y][x]
+
+
+class Ws2812b16x16Display(Display):
+    def __init__(self):
+        super().__init__(16, 16)
+        self.max_fps = 60
+        LED_COUNT = 256
+        LED_PIN = board.D18
+        LED_BRIGHTNESS = 0.1
+        ORDER = neo.GRB
+        self.pixels = neo.NeoPixel(
+            LED_PIN, LED_COUNT, brightness=LED_BRIGHTNESS,
+            auto_write=False, pixel_order=ORDER
+        )
+
