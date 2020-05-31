@@ -1,7 +1,9 @@
 from BlazeMatrix import Color
+
+
 # import pygame
-import neopixel as neo
-import board
+# import neopixel as neo
+# import board
 
 class Display:
     def __init__(self, w, h):
@@ -63,3 +65,16 @@ class Ws2812b16x16Display(Display):
             auto_write=False, pixel_order=ORDER
         )
 
+    def update(self):
+        self.pixels.show()
+
+    def set_pixel(self, x, y, color: Color):
+        self.pixels[self.x_y_to_i(x, y)] = color.rgb
+
+    def get_pixel(self, x, y):
+        return Color(self.pixels[self.x_y_to_i(x, y)])
+
+    def x_y_to_i(self, x, y):
+        i = (15 - y) * 16
+        i += x if y % 2 == 0 else 15 - x
+        return i

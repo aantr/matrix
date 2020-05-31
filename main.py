@@ -6,6 +6,7 @@ effects = [Snow, RainbowFill]
 button = Button()
 button_controller = ButtonController(button)
 matrix = Matrix(display=display, effects=effects, controllers=[button_controller])
+previous_frame_time = time.time()
 
 while 1:
     delta_time = time.time() - previous_frame_time
