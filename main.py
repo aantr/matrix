@@ -11,11 +11,11 @@ ORDER = neo.GRB
 
 pixels = neo.NeoPixel(LED_PIN, LED_COUNT, brightness=LED_BRIGHTNESS, auto_write=False, pixel_order=ORDER)
 
-display = PyGameDisplay()
+display = Display()
 effects = [Snow, RainbowFill]
-button = KeyboardButton('space')
-button_controller = ButtonController(button)
-matrix = Matrix(display, effects, [button_controller])
+# button = KeyboardButton('space')
+# button_controller = ButtonController(button)
+matrix = Matrix(display, effects, [])
 
 pixels[0] = neo.Color(255, 255, 255)
 pixels.show()
