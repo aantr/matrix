@@ -62,7 +62,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main (1)">
+  <component name="RunManager" selected="Python.color">
     <configuration name="Zadanie_2" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="matrix_raspberry" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -191,8 +191,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.color" />
+        <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.__init__ (1)" />
         <item itemvalue="Python.Zadanie_2_2" />
         <item itemvalue="Python.Zadanie_2" />

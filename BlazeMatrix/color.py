@@ -2,7 +2,7 @@ import colorsys
 
 
 class Color:
-    def __init__(self, hsv=False, *args):
+    def __init__(self, *args, hsv=False):
         if len(args) != 3:
             raise TypeError('invalid number of arguments, expected 3')
         if hsv:
