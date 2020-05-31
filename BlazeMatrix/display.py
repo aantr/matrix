@@ -1,6 +1,6 @@
 from BlazeMatrix import Color
 
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     import pygame

@@ -1,7 +1,7 @@
 from BlazeMatrix import *
 import time
 
-DEBUG = True
+DEBUG = False
 effects = [Snow, RainbowFill]
 if DEBUG:
     display = PyGameDisplay()
