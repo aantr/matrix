@@ -2,7 +2,7 @@ import keyboard
 
 
 class Button:
-    def __init__(self, holding_timeout=0.3, multiply_click_timeout=0.3):
+    def __init__(self, holding_timeout=0.5, multiply_click_timeout=0.4):
         self.button_state = self.get_state()
         self.holding_timeout = holding_timeout
         self.multiply_click_timeout = multiply_click_timeout
@@ -13,6 +13,8 @@ class Button:
         self.clicks_flag = False
         self.holding = False
         self.held = False
+        self.wheel = -1
+        self.speed_wheel = 0.1
 
     def update(self, dt):
         new_state = self.get_state()
@@ -21,6 +23,9 @@ class Button:
             self.state_time = 0
         else:
             self.state_time += dt
+        if self.clicks_flag:
+            self.clicks_flag = False
+            self.clicks = 0
         if new_state:
             self.on_button_down()
         else:
@@ -36,6 +41,9 @@ class Button:
     def is_held(self):
         return self.held
 
+    def get_wheel(self):
+        return self.wheel * self.speed_wheel
+
     def get_state(self):
         ...
 
@@ -46,10 +54,12 @@ class Button:
         if self.state_time > self.holding_timeout:
             if not self.held and not self.holding:
                 self.held = True
-                self.clicks = 0  # If made a few clicks and after holding occurred then clicks will not work
+                self.clicks_flag = True
             else:
                 self.held = False
                 self.holding = True
+        if self.is_held():
+            self.wheel *= -1
 
     def on_button_up(self):
         if self.state_time == 0:
@@ -62,9 +72,7 @@ class Button:
             if not self.prev_state_time > self.holding_timeout and self.prev_state_time > 0:
                 self.clicks += 1
 
-        if self.clicks_flag:
-            self.clicks_flag = False
-            self.clicks = 0
+
         if self.state_time > self.multiply_click_timeout and self.clicks > 0:
             self.clicks_flag = True
 

@@ -1,3 +1,4 @@
+import time
 from BlazeMatrix import Display
 
 
@@ -20,6 +21,7 @@ class Matrix:
                 self.next_activity()
             if controller.prev_activity():
                 self.prev_activity()
+        time.sleep(self.activity.frame_time)
 
     def next_activity(self):
         print('next')

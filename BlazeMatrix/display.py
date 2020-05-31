@@ -1,9 +1,13 @@
 from BlazeMatrix import Color
 
+DEBUG = True
 
-# import pygame
-# import neopixel as neo
-# import board
+if DEBUG:
+    import pygame
+else:
+    import neopixel as neo
+    import board
+
 
 class Display:
     def __init__(self, w, h):
@@ -11,7 +15,7 @@ class Display:
         self.h = h
         self.min_fps = 1
         self.max_fps = 100
-        self.default_fps = 30
+        self.default_fps = 1
 
     def update(self):
         ...
@@ -69,12 +73,12 @@ class Ws2812b16x16Display(Display):
         self.pixels.show()
 
     def set_pixel(self, x, y, color: Color):
-        self.pixels[self.x_y_to_i(x, y)] = color.rgb
+        self.pixels[self.xy2i(x, y)] = color.rgb
 
     def get_pixel(self, x, y):
-        return Color(self.pixels[self.x_y_to_i(x, y)])
+        return Color(*self.pixels[self.xy2i(x, y)])
 
-    def x_y_to_i(self, x, y):
-        i = (15 - y) * 16
-        i += x if y % 2 == 0 else 15 - x
+    def xy2i(self, x, y):
+        i = y * 16
+        i += x if (15 - y) % 2 == 0 else 15 - x
         return i

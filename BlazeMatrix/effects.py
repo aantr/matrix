@@ -5,7 +5,7 @@ from random import randrange
 class RainbowFill(Effect):
     def init(self):
         self.hue = 0
-        return {'name': 'rainbow fill', 'default_fps': 60, 'values': {}}
+        return {'name': 'rainbow fill', 'values': {}}
 
     def update(self):
         self.hue += 1 if self.hue < 255 else -255
@@ -17,7 +17,7 @@ class RainbowFill(Effect):
 
 class Snow(Effect):
     def init(self):
-        return {'name': 'snowfall', 'default_fps': 30, 'values': {'dense': 10}}
+        return {'name': 'snowfall', 'values': {'dense': 10}}
 
     def update(self):
         for x in range(self.w):
